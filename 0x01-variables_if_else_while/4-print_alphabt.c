@@ -3,7 +3,7 @@
  * main - Entry point
  *
  * Description: main is the entry point
- * Result: 0 (success)
+ * Return: 0 (success)
  */
 int main(void)
 {
