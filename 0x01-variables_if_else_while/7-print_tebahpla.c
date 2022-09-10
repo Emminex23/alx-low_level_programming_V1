@@ -3,17 +3,14 @@
  * main - Entry point
  *
  * Description: main is the entry point
- * Result: 0 (success)
+ * Return: 0 (success)
  */
 int main(void)
 {
 	char letter;
 
-	for (letter = 'a'; letter <= 'z'; letter++)
-	{
-		if (letter != 'e' && letter != 'q')
-			putchar(letter);
-	}
+	for (letter = 'z'; letter >= 'a'; letter--)
+		putchar(letter);
 
 	putchar('\n');
 
