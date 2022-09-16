@@ -2,8 +2,10 @@
 #include <time.h>
 #include <stdio.h>
 /**
- * main - Entry point
+ * positive_or_negative - Entry point
+ * @n: an integer
  *
+ * Description: The function produces a positive or negative integer
  * Return: 0 (Success)
  */
 void positive_or_negative(int n)
