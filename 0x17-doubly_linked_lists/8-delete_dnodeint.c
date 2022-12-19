@@ -1,51 +1,42 @@
 #include "lists.h"
 
 /**
- * sum_dlistint - function that returns the sum of all the data (n) of a
- * dlistint_t linked list.
- * @head: input of a list.
- * Return: the sum of the list
+ * delete_dnodeint_at_index - Deletes a node from a dlistint_t
+ *                            at a given index.
+ * @head: A pointer to the head of the dlistint_t.
+ * @index: The index of the node to delete.
+ *
+ * Return: Upon success - 1.
+ *         Otherwise - -1.
  */
-
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
 	dlistint_t *tmp = *head;
-	dlistint_t *p = NULL;
-	dlistint_t *delete = NULL;
-	unsigned int i = 1;
 
+	if (*head == NULL)
+		return (-1);
 
-	while (index > i)
+	for (; index != 0; index--)
 	{
+		if (tmp == NULL)
+			return (-1);
 		tmp = tmp->next;
-		i++;
 	}
-	if (tmp == NULL)
-		return(-1);
+
 	if (tmp == *head)
 	{
-		delete = tmp;
-		tmp = tmp->next;
-		*head = tmp;
-		if (tmp != NULL)
-			tmp->prev = NULL;
+		*head = tmp->next;
+		if (*head != NULL)
+			(*head)->prev = NULL;
 	}
-	else if (tmp->next->next == NULL)
-	{
-		tmp->next->prev = NULL;
-		delete = tmp->next;
-		tmp->next = NULL;
 
-	}
 	else
 	{
-		delete = tmp->next;
-		p = tmp->next->next;
-		tmp->next->next = NULL;
-		tmp->next->prev = NULL;
-		tmp->next = p;
-		p->prev = tmp;
+		tmp->prev->next = tmp->next;
+		if (tmp->next != NULL)
+			tmp->next->prev = tmp->prev;
 	}
-	free(delete);
-	return(1);
+
+	free(tmp);
+	return (1);
 }
